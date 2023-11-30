@@ -1,9 +1,10 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Users from "./pages/Users";
+
 import CreateUser from "./pages/CreateUser";
 import { ThemeProvider } from "@material-ui/core";
 import { createTheme } from "@material-ui/core";
+import PermanentDrawerLeft from "./pages/Sidebar";
 
 const theme = createTheme({
   typography: {
@@ -18,7 +19,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Users />} />
+            <Route path="/" element={<PermanentDrawerLeft />} />
             <Route path="/create" element={<CreateUser />} />
           </Routes>
         </BrowserRouter>

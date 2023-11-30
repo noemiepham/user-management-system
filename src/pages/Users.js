@@ -1,5 +1,7 @@
 import { Container, Paper } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
+import PermanentDrawerLeft from "./Sidebar";
+
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -30,9 +32,9 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 /*  create new data follow filter */
-function createData(usernames, age, gender, tel, address) {
+/* function createData(usernames, age, gender, tel, address) {
   return { usernames, age, gender, tel, address };
-}
+} */
 
 const useStyles = makeStyles({
   table: {
