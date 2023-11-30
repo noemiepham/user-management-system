@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+<![endif]–>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Full-Stack Developer Assignment: Mock Service and CRUD Operations Project Overview:
 
-## Available Scripts
+You are required to develop a simple web application that simulates a user management system. The application will have both a frontend and a backend. For the purposes of this assignment**, the backend will be mocked**.
 
-In the project directory, you can run:
+Frontend:
 
-### `npm start`
+Develop a React application using Material-UI for styling.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application should have the following pages:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+User List Page: Display a list of users.
+User Detail Page: Show detailed information for a selected user.
+User Creation Page: A form to add a new user.
+User Edit Page: A form to edit existing user information.
+<![if !supportLineBreakNewLine]>
+<![endif]>
 
-### `npm test`
+Backend (Mock):
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Instead of a real backend, use msw (Mock Service Worker) to mock API responses. The API should support the following CRUD operations:
 
-### `npm run build`
+Create: Add a new user.
+Read: Get a list of users and get details for a specific user.
+Update: Update user information.
+Delete: Remove a user.
+<![if !supportLineBreakNewLine]>
+<![endif]>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Testing:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Write unit tests for your components using Vitest. Ensure to test critical functionalities, including form submissions and API interactions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<![if !supportLineBreakNewLine]>
+<![endif]>
 
-### `npm run eject`
+Assignment Requirements:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**
+<![if !supportLineBreakNewLine]>
+<![endif]>**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Frontend Development:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Implement the user interface as described, ensuring it is responsive and user-friendly. Use React with Functional Components and Hooks.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Manage state using React Context API or any state management library of your choice.
 
-## Learn More
+<![if !supportLineBreakNewLine]>
+<![endif]>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. API Mocking:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Use msw to mock the backend.
 
-### Code Splitting
+Define handlers for each CRUD operation.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Ensure that the mocked API behaves as close to a real API as possible.
 
-### Analyzing the Bundle Size
+<![if !supportLineBreakNewLine]>
+<![endif]>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Testing:
 
-### Making a Progressive Web App
+Write comprehensive tests for your application. Your tests should cover key functionalities and components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<![if !supportLineBreakNewLine]>
+<![endif]>
 
-### Advanced Configuration
+4. Documentation:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Provide a README file explaining how to set up and run your application and tests. Document any assumptions or decisions you made during development.
 
-### Deployment
+<![if !supportLineBreakNewLine]>
+<![endif]>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+5. Submission:
 
-### `npm run build` fails to minify
+Submit your code via a Git repository link. Ensure your code is well-organized and commented where necessary.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<![if !supportLineBreakNewLine]>
+<![endif]>
+
+6. Evaluation Criteria:
+
+Code quality and best practices in both frontend and backend development.
+
+
+Effective use of the specified tools and libraries.
+
+The correctness of CRUD operations and how well they are mocked.
+
+The quality and coverage of tests.
+
+Adherence to the requirements and completeness of the application.
