@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Typography, Button } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import SendIcon from "@material-ui/icons/Send";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -163,8 +162,6 @@ export default function CreateUser() {
           Submit
         </Button>
       </form>
-
-      <DeleteForeverIcon color="secondary" fontSize="large" />
     </Container>
   );
 }
