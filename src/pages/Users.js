@@ -1,6 +1,5 @@
 import { Container, Paper } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import PermanentDrawerLeft from "./Sidebar";
 
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -11,6 +10,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
+import ShowUser from "./ShowUser";
 
 /* Style css for table data */
 const StyledTableCell = withStyles((theme) => ({
@@ -28,6 +28,7 @@ const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
+      paddding: 0,
     },
   },
 }))(TableRow);
@@ -39,12 +40,21 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
+    marginTop: 60,
+    padding: 0,
+  },
+  flex: {
+    display: "flex",
+    margin: 0,
+    padding: 0,
+    width: "auto",
   },
 });
 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const classes = useStyles();
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     fetch("http://localhost:3333/users", {
@@ -57,13 +67,18 @@ export default function Users() {
       .then((data) => {
         console.log("received", data);
         setUsers(data.users);
+        setUser(data.users ? data.users[0] : {});
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+  const handleShowUser = (user) => {
+    setUser(user);
+  };
   return (
-    <Container>
+    <Container className={classes.flex}>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
@@ -80,7 +95,10 @@ export default function Users() {
           </TableHead>
           <TableBody>
             {users.map((user) => (
-              <StyledTableRow key={user.id}>
+              <StyledTableRow
+                key={user.id}
+                onClick={() => handleShowUser(user)}
+              >
                 <StyledTableCell component="th" scope="row">
                   {user.id}
                 </StyledTableCell>
@@ -89,6 +107,7 @@ export default function Users() {
                 </StyledTableCell>
                 <StyledTableCell align="right">{user.age}</StyledTableCell>
                 <StyledTableCell align="right">{user.gender}</StyledTableCell>
+
                 <StyledTableCell align="right">
                   {user.birthDate}
                 </StyledTableCell>
@@ -107,6 +126,7 @@ export default function Users() {
           </TableBody>
         </Table>
       </TableContainer>
+      <ShowUser user={user} />
     </Container>
   );
 }

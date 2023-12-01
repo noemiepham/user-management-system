@@ -34,23 +34,38 @@ export default function CreateUser() {
   const [titleErrors, setTileErros] = useState(false);
   const [detailsErros, setDetailErros] = useState(false);
   const [value, setValue] = useState("female");
+  const [user, setUser] = useState({});
+  const initialForm = {
+    username: "",
+    email: "",
+    phone: "",
+    address: "",
+    detail: "",
+  };
+  const [userForm, setUserForm] = useState(initialForm);
+
   const handleChange = (e) => {
     setValue(e.target.value);
   };
   const handleSubmit = (e) => {
-    setDetailErros(false);
-    setTileErros(false);
-    e.preventDefault();
-    if (title === "") {
-      setTileErros(true);
-    }
-    if (details === "") {
-      setDetailErros(true);
-    }
-
-    if (title && details) {
-      console.log(title, details);
-    }
+    console.log(userForm);
+    fetch("http://localhost:3333/users/creation", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("received", data);
+        setUser(data);
+        setUserForm(initialForm);
+        // setUsers(data.users);
+        // setUser(data.users ? data.users[0] : {});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <Container maxWidth="sm">
@@ -69,11 +84,18 @@ export default function CreateUser() {
         noValidate
         autoComplete="off"
         onSubmit={handleSubmit}
+        ini
       >
         <TextField
           className={classes.field}
-          onChange={(e) => setTile(e.target.value)}
-          id="standard-basic"
+          onChange={(e) =>
+            setUserForm({
+              ...userForm,
+              username: e.target.value,
+            })
+          }
+          value={userForm.username}
+          id="username"
           label="User Name"
           variant="outlined"
           color="secondary"
@@ -83,8 +105,14 @@ export default function CreateUser() {
         />
         <TextField
           className={classes.field}
-          onChange={(e) => setTile(e.target.value)}
-          id="standard-basic"
+          onChange={(e) =>
+            setUserForm({
+              ...userForm,
+              email: e.target.value,
+            })
+          }
+          value={userForm.email}
+          id="email"
           label="emails"
           variant="outlined"
           color="secondary"
@@ -94,8 +122,14 @@ export default function CreateUser() {
         />
         <TextField
           className={classes.field}
-          onChange={(e) => setTile(e.target.value)}
-          id="standard-basic"
+          onChange={(e) =>
+            setUserForm({
+              ...userForm,
+              phone: e.target.value,
+            })
+          }
+          value={userForm.phone}
+          id="phone"
           label="phone numbers"
           variant="outlined"
           color="secondary"
@@ -105,8 +139,14 @@ export default function CreateUser() {
         />
         <TextField
           className={classes.field}
-          onChange={(e) => setTile(e.target.value)}
-          id="standard-basic"
+          onChange={(e) =>
+            setUserForm({
+              ...userForm,
+              address: e.target.value,
+            })
+          }
+          value={userForm.address}
+          id="address"
           label="address"
           variant="outlined"
           color="secondary"
@@ -115,8 +155,14 @@ export default function CreateUser() {
           error={titleErrors}
         />
         <TextField
-          onChange={(e) => setDetail(e.target.value)}
-          id="standard-basic"
+          onChange={(e) =>
+            setUserForm({
+              ...userForm,
+              detail: e.target.value,
+            })
+          }
+          value={userForm.detail}
+          id="detail"
           label="Detail"
           variant="outlined"
           color="secondary"
@@ -154,9 +200,10 @@ export default function CreateUser() {
         <Button
           /*       onClick={() => console.log("youClickme")} */
           className={classes.btn}
-          type="submit"
+          type="button"
           color="secondary"
           variant="contained"
+          onClick={handleSubmit}
           endIcon={<SendIcon />}
         >
           Submit
